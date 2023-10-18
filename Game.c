@@ -93,6 +93,7 @@ void printWorld(Hero *pmc) {
     printf("%s\n", WALL_CHARACTER); /* right border */
   }
   printf("%s\n", top_and_bottom);
+  free(top_and_bottom);
 }
 
 bool move(Hero *pmc, Bindings *keys) {
