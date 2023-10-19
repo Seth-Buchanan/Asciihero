@@ -20,19 +20,12 @@ int getch();
 
 
 typedef struct Hero {
-  char name[10];
-  char symbol;
-  int x;
-  int y;
-  int score;
+  char name[10], symbol;
+  unsigned short x, y, score;
 } Hero;
 
 typedef struct Bindings {
-  char up;
-  char left;
-  char down;
-  char right;
-  char exit;
+  char up, left, down, right, exit;
 } Bindings;
 
 
@@ -93,10 +86,11 @@ void printWorld(Hero *pmc) {
     printf("%s\n", WALL_CHARACTER); /* right border */
   }
   printf("%s\n", top_and_bottom);
+  free(top_and_bottom);
 }
 
 bool move(Hero *pmc, Bindings *keys) {
-  printf("Move, %s [%c%c%c%c] \t %c to quit.\t SCORE: %d",
+  printf("Move, %s [%c%c%c%c] \t %c to quit.\t SCORE: %hu",
 	 pmc->name, keys->up, keys->left, keys->down, keys->right, keys->exit, pmc->score);
 
   char keypress = toupper(getch());
